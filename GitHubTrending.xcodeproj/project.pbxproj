@@ -15,6 +15,8 @@
 		EB2F16BE2EC8B10F003FD370 /* OfflineIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F16BD2EC8B10F003FD370 /* OfflineIndicatorView.swift */; };
 		EB2F16C02EC8B139003FD370 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F16BF2EC8B139003FD370 /* SearchBarView.swift */; };
 		EB2F16F92EC8B2BB003FD370 /* RepositoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F16F82EC8B2BB003FD370 /* RepositoryListView.swift */; };
+		EB2F175B2EC8F0C4003FD370 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F175A2EC8F0C4003FD370 /* NetworkService.swift */; };
+		EB2F175D2EC8F0DC003FD370 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F175C2EC8F0DC003FD370 /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		EB2F16BD2EC8B10F003FD370 /* OfflineIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineIndicatorView.swift; sourceTree = "<group>"; };
 		EB2F16BF2EC8B139003FD370 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		EB2F16F82EC8B2BB003FD370 /* RepositoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListView.swift; sourceTree = "<group>"; };
+		EB2F175A2EC8F0C4003FD370 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		EB2F175C2EC8F0DC003FD370 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -110,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				EB2F15D72EC89658003FD370 /* GitHubTrendingApp.swift */,
+				EB2F17592EC8EF99003FD370 /* Services */,
 				EB2F16322EC8A55D003FD370 /* Scene */,
 				EB2F15DB2EC8965A003FD370 /* Assets.xcassets */,
 			);
@@ -151,6 +156,15 @@
 				EB2F16B32EC8A9DD003FD370 /* GitHubSearchResponseEntity.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		EB2F17592EC8EF99003FD370 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EB2F175A2EC8F0C4003FD370 /* NetworkService.swift */,
+				EB2F175C2EC8F0DC003FD370 /* NetworkError.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,9 +311,11 @@
 			files = (
 				EB2F16362EC8A588003FD370 /* RepositoryCardView.swift in Sources */,
 				EB2F16BC2EC8AEDB003FD370 /* RepositoryUIModel.swift in Sources */,
+				EB2F175B2EC8F0C4003FD370 /* NetworkService.swift in Sources */,
 				EB2F16F92EC8B2BB003FD370 /* RepositoryListView.swift in Sources */,
 				EB2F16B42EC8A9DD003FD370 /* GitHubSearchResponseEntity.swift in Sources */,
 				EB2F15D82EC89658003FD370 /* GitHubTrendingApp.swift in Sources */,
+				EB2F175D2EC8F0DC003FD370 /* NetworkError.swift in Sources */,
 				EB2F16C02EC8B139003FD370 /* SearchBarView.swift in Sources */,
 				EB2F16BE2EC8B10F003FD370 /* OfflineIndicatorView.swift in Sources */,
 			);
