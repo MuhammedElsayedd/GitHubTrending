@@ -11,7 +11,7 @@ import SwiftUI
 struct GitHubTrendingApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            
         }
     }
 }
