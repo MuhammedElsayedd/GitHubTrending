@@ -17,6 +17,7 @@
 		EB2F16F92EC8B2BB003FD370 /* RepositoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F16F82EC8B2BB003FD370 /* RepositoryListView.swift */; };
 		EB2F175B2EC8F0C4003FD370 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F175A2EC8F0C4003FD370 /* NetworkService.swift */; };
 		EB2F175D2EC8F0DC003FD370 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F175C2EC8F0DC003FD370 /* NetworkError.swift */; };
+		EB2F176C2EC9063E003FD370 /* SearchRepositoriesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F176B2EC9063E003FD370 /* SearchRepositoriesUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		EB2F16F82EC8B2BB003FD370 /* RepositoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListView.swift; sourceTree = "<group>"; };
 		EB2F175A2EC8F0C4003FD370 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		EB2F175C2EC8F0DC003FD370 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		EB2F176B2EC9063E003FD370 /* SearchRepositoriesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -124,6 +126,7 @@
 		EB2F16322EC8A55D003FD370 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				EB2F176A2EC90606003FD370 /* UseCase */,
 				EB2F16B22EC8A9AC003FD370 /* Entities */,
 				EB2F16342EC8A578003FD370 /* Model */,
 				EB2F16332EC8A56D003FD370 /* Views */,
@@ -165,6 +168,14 @@
 				EB2F175C2EC8F0DC003FD370 /* NetworkError.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		EB2F176A2EC90606003FD370 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				EB2F176B2EC9063E003FD370 /* SearchRepositoriesUseCase.swift */,
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +329,7 @@
 				EB2F175D2EC8F0DC003FD370 /* NetworkError.swift in Sources */,
 				EB2F16C02EC8B139003FD370 /* SearchBarView.swift in Sources */,
 				EB2F16BE2EC8B10F003FD370 /* OfflineIndicatorView.swift in Sources */,
+				EB2F176C2EC9063E003FD370 /* SearchRepositoriesUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
