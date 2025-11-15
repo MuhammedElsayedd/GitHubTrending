@@ -8,37 +8,29 @@
 import SwiftUI
 
 struct RepositoryListView: View {
-    @State private var searchText = ""
-    @State private var repositories: [RepositoryUIModel] =
-        MockRepository.sampleData.map { RepositoryUIModel(from: $0) }
-
+    @State var viewModel: RepositoryViewModelProtocol
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(.gray)
-                    
-                    TextField("Search repositories...", text: $searchText)
-                        .textFieldStyle(PlainTextFieldStyle())
-                    
-                    if !searchText.isEmpty {
-                        Button(action: {
-                            searchText = ""
-                        }) {
-                            Image(systemName: "xmark.circle.fill")
-                                .foregroundColor(.gray)
-                        }
-                    }
-                }
-                .padding(.horizontal, 12)
-                .padding(.vertical, 10)
-                .background(Color(.systemGray6))
-                .cornerRadius(10)
-                .padding(.horizontal)
-                .padding(.top, 8)
+                SearchBarView(text: $viewModel.searchQuery)
+                    .padding(.horizontal)
+                    .padding(.top, 8)
                 
-                if repositories.isEmpty {
+                if viewModel.isOffline {
+                    OfflineIndicatorView(message: "Using cached data - Offline mode")
+                        .padding(.horizontal)
+                        .padding(.top, 8)
+                }
+                
+                if let errorMessage = viewModel.errorMessage, !viewModel.isOffline {
+                    Text(errorMessage)
+                        .font(.caption)
+                        .foregroundColor(.red)
+                        .padding()
+                }
+                
+                if viewModel.repositories.isEmpty && !viewModel.isLoading {
                     VStack {
                         Spacer()
                         Image(systemName: "magnifyingglass")
@@ -53,23 +45,46 @@ struct RepositoryListView: View {
                 } else {
                     ScrollView {
                         LazyVStack(spacing: 12) {
-                            ForEach(repositories) { repository in
+                            ForEach(viewModel.repositories) { repository in
                                 RepositoryCardView(
                                     repository: repository,
                                     isFavorite: true,
                                     onFavoriteToggle: {},
                                 )
+                                .onAppear {
+                                    if repository.id == viewModel.repositories.last?.id {
+                                        Task {
+                                            await viewModel.loadMoreIfNeeded()
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            if viewModel.isLoading && viewModel.currentPage > 1 {
+                                ProgressView()
+                                    .padding()
                             }
                         }
                         .padding()
                     }
+                    .refreshable {
+                        await viewModel.refresh()
+                    }
+                }
+                
+                if viewModel.isLoading && viewModel.repositories.isEmpty {
+                    ProgressView("Loading repositories...")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
             .navigationTitle("GitHub Repositories")
+            .task {
+                await viewModel.loadInitialData()
+            }
         }
     }
 }
 
 #Preview {
-    RepositoryListView()
+    RepositoryListView(viewModel: RepositoryViewModelMock())
 }
