@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import Observation
 protocol RepositoryViewModelProtocol: Observable {
     var repositories: [RepositoryUIModel] { get }
     var isLoading: Bool { get }
@@ -21,8 +21,11 @@ protocol RepositoryViewModelProtocol: Observable {
     func performSearch(query: String, page: Int) async
     func refresh() async
     func loadMoreIfNeeded() async
+    func isFavorite(_ repository: RepositoryUIModel) -> Bool
+    func toggleFavorite(_ repository: RepositoryUIModel)
 }
 
+@MainActor
 @Observable
 final class RepositoryViewModel: RepositoryViewModelProtocol {
     var repositories: [RepositoryUIModel] = []
@@ -39,18 +42,22 @@ final class RepositoryViewModel: RepositoryViewModelProtocol {
     var currentPage = 1
     var hasMorePages = true
     var isRefreshing = false
+    private var favoritesUpdateCounter = 0
     
     private let searchRepositoriesUseCase: SearchRepositoriesUseCaseProtocol
     private let cache: RepositoryCacheProtocol
+    private let favoritesManager: FavoritesManagerProtocol
     private let defaultQuery = "language:swift"
     private var searchTask: Task<Void, Never>?
     
     init(
         searchRepositoriesUseCase: SearchRepositoriesUseCaseProtocol,
-        cache: RepositoryCacheProtocol
+        cache: RepositoryCacheProtocol,
+        favoritesManager: FavoritesManagerProtocol
     ) {
         self.searchRepositoriesUseCase = searchRepositoriesUseCase
         self.cache = cache
+        self.favoritesManager = favoritesManager
     }
     
     private func handleSearchQueryChange() {
@@ -66,7 +73,6 @@ final class RepositoryViewModel: RepositoryViewModelProtocol {
         }
     }
     
-    @MainActor
     func loadInitialData() async {
         await performSearch(query: defaultQuery)
     }
@@ -119,5 +125,15 @@ final class RepositoryViewModel: RepositoryViewModelProtocol {
         
         let query = searchQuery.isEmpty ? defaultQuery : searchQuery
         await performSearch(query: query, page: currentPage + 1)
+    }
+    
+    func isFavorite(_ repository: RepositoryUIModel) -> Bool {
+        _ = favoritesUpdateCounter
+        return favoritesManager.isFavorite(repository.toEntity())
+    }
+    
+    func toggleFavorite(_ repository: RepositoryUIModel) {
+        favoritesManager.toggleFavorite(repository.toEntity())
+        favoritesUpdateCounter += 1
     }
 }

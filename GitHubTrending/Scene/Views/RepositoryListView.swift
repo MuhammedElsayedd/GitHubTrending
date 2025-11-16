@@ -48,8 +48,10 @@ struct RepositoryListView: View {
                             ForEach(viewModel.repositories) { repository in
                                 RepositoryCardView(
                                     repository: repository,
-                                    isFavorite: true,
-                                    onFavoriteToggle: {},
+                                    isFavorite: viewModel.isFavorite(repository),
+                                    onFavoriteToggle: {
+                                        viewModel.toggleFavorite(repository)
+                                    }
                                 )
                                 .onAppear {
                                     if repository.id == viewModel.repositories.last?.id {
