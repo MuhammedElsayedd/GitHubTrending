@@ -43,4 +43,10 @@ final class RepositoryViewModelMock: RepositoryViewModelProtocol {
     func loadMoreIfNeeded() async {
         hasMorePages = false
     }
+
+    func isFavorite(_ repository: RepositoryUIModel) -> Bool {
+        return false
+    }
+
+    func toggleFavorite(_ repository: RepositoryUIModel) {}
 }

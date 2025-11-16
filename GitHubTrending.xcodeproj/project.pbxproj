@@ -21,6 +21,8 @@
 		EB2F177B2EC9134B003FD370 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F177A2EC9134B003FD370 /* RepositoryViewModel.swift */; };
 		EB2F177D2EC91A8B003FD370 /* RepositoryViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F177C2EC91A8B003FD370 /* RepositoryViewModelMock.swift */; };
 		EB2F178B2EC9F9D5003FD370 /* RepositoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F178A2EC9F9D5003FD370 /* RepositoryCache.swift */; };
+		EB2F17992ECA39E2003FD370 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F17982ECA39E2003FD370 /* FavoritesManager.swift */; };
+		EB2F17D02ECA8A91003FD370 /* RepositoryConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F17CF2ECA8A91003FD370 /* RepositoryConfigurator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		EB2F177A2EC9134B003FD370 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
 		EB2F177C2EC91A8B003FD370 /* RepositoryViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModelMock.swift; sourceTree = "<group>"; };
 		EB2F178A2EC9F9D5003FD370 /* RepositoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCache.swift; sourceTree = "<group>"; };
+		EB2F17982ECA39E2003FD370 /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
+		EB2F17CF2ECA8A91003FD370 /* RepositoryConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryConfigurator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -132,6 +136,7 @@
 		EB2F16322EC8A55D003FD370 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				EB2F17CF2ECA8A91003FD370 /* RepositoryConfigurator.swift */,
 				EB2F16B22EC8A9AC003FD370 /* Entities */,
 				EB2F176A2EC90606003FD370 /* UseCase */,
 				EB2F17792EC9130C003FD370 /* ViewModels */,
@@ -174,6 +179,7 @@
 				EB2F175A2EC8F0C4003FD370 /* NetworkService.swift */,
 				EB2F175C2EC8F0DC003FD370 /* NetworkError.swift */,
 				EB2F178A2EC9F9D5003FD370 /* RepositoryCache.swift */,
+				EB2F17982ECA39E2003FD370 /* FavoritesManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -340,6 +346,8 @@
 				EB2F16362EC8A588003FD370 /* RepositoryCardView.swift in Sources */,
 				EB2F16BC2EC8AEDB003FD370 /* RepositoryUIModel.swift in Sources */,
 				EB2F177D2EC91A8B003FD370 /* RepositoryViewModelMock.swift in Sources */,
+				EB2F17992ECA39E2003FD370 /* FavoritesManager.swift in Sources */,
+				EB2F17D02ECA8A91003FD370 /* RepositoryConfigurator.swift in Sources */,
 				EB2F178B2EC9F9D5003FD370 /* RepositoryCache.swift in Sources */,
 				EB2F175B2EC8F0C4003FD370 /* NetworkService.swift in Sources */,
 				EB2F16F92EC8B2BB003FD370 /* RepositoryListView.swift in Sources */,
