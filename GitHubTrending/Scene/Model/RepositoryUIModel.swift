@@ -41,6 +41,18 @@ struct RepositoryUIModel: Identifiable, Equatable {
             return "\(count)"
         }
     }
+    
+    func toEntity() -> RepositoryEntity {
+        RepositoryEntity(
+            id: id,
+            name: name,
+            fullName: fullName,
+            description: description,
+            stars: stars,
+            owner: owner.toEntity(),
+            htmlURL: htmlURL
+        )
+    }
 }
 
 struct OwnerUIModel: Equatable {
@@ -58,6 +70,10 @@ struct OwnerUIModel: Equatable {
         self.login = login
         self.avatarURL = avatarURL
         self.displayName = "@\(login)"
+    }
+    
+    func toEntity() -> OwnerEntity {
+        OwnerEntity(login: login, avatarURL: avatarURL)
     }
 }
 

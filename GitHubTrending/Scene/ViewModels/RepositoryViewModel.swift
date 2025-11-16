@@ -41,13 +41,16 @@ final class RepositoryViewModel: RepositoryViewModelProtocol {
     var isRefreshing = false
     
     private let searchRepositoriesUseCase: SearchRepositoriesUseCaseProtocol
+    private let cache: RepositoryCacheProtocol
     private let defaultQuery = "language:swift"
     private var searchTask: Task<Void, Never>?
     
     init(
-        searchRepositoriesUseCase: SearchRepositoriesUseCaseProtocol
+        searchRepositoriesUseCase: SearchRepositoriesUseCaseProtocol,
+        cache: RepositoryCacheProtocol
     ) {
         self.searchRepositoriesUseCase = searchRepositoriesUseCase
+        self.cache = cache
     }
     
     private func handleSearchQueryChange() {
@@ -80,6 +83,7 @@ final class RepositoryViewModel: RepositoryViewModelProtocol {
             
             if page == 1 {
                 repositories = response.repositories
+                cache.save(response.repositories.map { $0.toEntity() }, for: query)
                 isOffline = false
             } else {
                 repositories.append(contentsOf: response.repositories)
@@ -91,8 +95,15 @@ final class RepositoryViewModel: RepositoryViewModelProtocol {
             isLoading = false
             isRefreshing = false
         } catch {
-            errorMessage = error.localizedDescription
-            repositories = []
+            if let cachedEntities = cache.load(for: query.isEmpty ? nil : query) {
+                repositories = cachedEntities.map { RepositoryUIModel(from: $0) }
+                isOffline = true
+                errorMessage = "Using cached data. \(error.localizedDescription)"
+            } else {
+                errorMessage = error.localizedDescription
+                repositories = []
+            }
+            
             isLoading = false
             isRefreshing = false
         }

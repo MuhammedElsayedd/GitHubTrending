@@ -13,7 +13,8 @@ struct GitHubTrendingApp: App {
         WindowGroup {
             let networkService = NetworkService()
             let useCase = SearchRepositoriesUseCase(networkService: networkService)
-            let viewModel = RepositoryViewModel(searchRepositoriesUseCase: useCase)
+            let repositoryCache = RepositoryCache()
+            let viewModel = RepositoryViewModel(searchRepositoriesUseCase: useCase, cache: repositoryCache)
 
             RepositoryListView(viewModel: viewModel)
         }

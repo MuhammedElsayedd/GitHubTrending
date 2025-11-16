@@ -20,6 +20,7 @@
 		EB2F176C2EC9063E003FD370 /* SearchRepositoriesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F176B2EC9063E003FD370 /* SearchRepositoriesUseCase.swift */; };
 		EB2F177B2EC9134B003FD370 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F177A2EC9134B003FD370 /* RepositoryViewModel.swift */; };
 		EB2F177D2EC91A8B003FD370 /* RepositoryViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F177C2EC91A8B003FD370 /* RepositoryViewModelMock.swift */; };
+		EB2F178B2EC9F9D5003FD370 /* RepositoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F178A2EC9F9D5003FD370 /* RepositoryCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		EB2F176B2EC9063E003FD370 /* SearchRepositoriesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesUseCase.swift; sourceTree = "<group>"; };
 		EB2F177A2EC9134B003FD370 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
 		EB2F177C2EC91A8B003FD370 /* RepositoryViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModelMock.swift; sourceTree = "<group>"; };
+		EB2F178A2EC9F9D5003FD370 /* RepositoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -171,6 +173,7 @@
 			children = (
 				EB2F175A2EC8F0C4003FD370 /* NetworkService.swift */,
 				EB2F175C2EC8F0DC003FD370 /* NetworkError.swift */,
+				EB2F178A2EC9F9D5003FD370 /* RepositoryCache.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				EB2F16362EC8A588003FD370 /* RepositoryCardView.swift in Sources */,
 				EB2F16BC2EC8AEDB003FD370 /* RepositoryUIModel.swift in Sources */,
 				EB2F177D2EC91A8B003FD370 /* RepositoryViewModelMock.swift in Sources */,
+				EB2F178B2EC9F9D5003FD370 /* RepositoryCache.swift in Sources */,
 				EB2F175B2EC8F0C4003FD370 /* NetworkService.swift in Sources */,
 				EB2F16F92EC8B2BB003FD370 /* RepositoryListView.swift in Sources */,
 				EB2F16B42EC8A9DD003FD370 /* GitHubSearchResponseEntity.swift in Sources */,
